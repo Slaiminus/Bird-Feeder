@@ -1,9 +1,11 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
 {
 
     [SerializeField] private string TreeTag;
+    [SerializeField] private float moveSpeed;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -20,7 +22,7 @@ public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
         {
             if (hit.transform.CompareTag(TreeTag))
             {
-                Debug.Log("Tree Hitted");
+                transform.DOMove(hit.transform.position, moveSpeed);
             }
         }
     }
