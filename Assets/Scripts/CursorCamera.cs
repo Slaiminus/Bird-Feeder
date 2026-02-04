@@ -9,6 +9,8 @@ public class CursorCamera : MonoBehaviour // Этот скрипт дал мне ии гугл из поис
     [SerializeField] private float yMinLimit;
     [SerializeField] private float yMaxLimit;
     [SerializeField] private float zoomSpeed;
+    [SerializeField] private float maxDistance;
+    [SerializeField] private float minDistance;
 
     private float x = 0.0f;
     private float y = 0.0f;
@@ -29,6 +31,8 @@ public class CursorCamera : MonoBehaviour // Этот скрипт дал мне ии гугл из поис
             y = Mathf.Clamp(y, yMinLimit, yMaxLimit);
 
             distance += Input.GetAxis("Mouse ScrollWheel") * zoomSpeed * -1;
+            distance = Mathf.Max(minDistance, distance);  //Ограничение зума
+            distance = Mathf.Min(maxDistance, distance);
 
             Quaternion rotation = Quaternion.Euler(y, x, 0);
             Vector3 position = rotation * new Vector3(0.0f, 0.0f, -distance) + target.transform.position;
