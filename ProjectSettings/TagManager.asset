@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tree
   - Feeder
+  - Ghost
   layers:
   - Default
   - TransparentFX
