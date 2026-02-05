@@ -67,6 +67,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: da2461192f1cebe41840ce3d262bd1f7, type: 3}
       insertIndex: -1
       addedObject: {fileID: -5863039352427421292}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: da2461192f1cebe41840ce3d262bd1f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7358242985033053428}
   m_SourcePrefab: {fileID: 100100000, guid: da2461192f1cebe41840ce3d262bd1f7, type: 3}
 --- !u!1 &4943395657039594949 stripped
 GameObject:
@@ -94,3 +97,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.144997, y: 13.144646, z: 16.632412}
   m_Center: {x: 0.0000770092, y: 0.0000011920928, z: 2.0885558}
+--- !u!114 &7358242985033053428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943395657039594949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb8f879111caaee46b08d6de2c6acaea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FeederLogic
+  seeds: {fileID: 7701287390122343982, guid: a454f7b63ca21ba4fa5d3e4bdaa9204e, type: 3}
+  thePanel: {fileID: 7266273267221016191, guid: 5ab3eae66cc02cf4bbc743e6cce3980c, type: 3}
+  earnAmount: 3
+  panel: {fileID: 0}
+  minDelay: 5
+  maxDelay: 10

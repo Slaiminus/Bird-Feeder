@@ -16,7 +16,9 @@ public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
     // private FeederCreator feederCreator;
     private GameObject objectHit;
     private GameObject lastObject;
+    private GameObject FeederObject;
     private RectTransform pos1;
+    private RectTransform seedPos;
 
     private void Awake()
     {
@@ -54,13 +56,20 @@ public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
             if (objectHit.CompareTag(TreeTag))
             {
                 transform.DOMove(objectHit.transform.position + new Vector3(0, -3, 0), moveSpeed);
-                Close();
             }
 
             if (objectHit.CompareTag(FeederTag))
             {
                 transform.DOMove(objectHit.transform.position, moveSpeed);
-                Close();
+                FeederObject = objectHit;
+                SeedOpen();
+            }
+            else
+            {
+                if (FeederObject != null)
+                {
+                    SeedClose();
+                }
             }
 
             if (objectHit.CompareTag(GhostTag))
@@ -68,6 +77,10 @@ public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
                 transform.DOMove(objectHit.transform.position, moveSpeed);
                 objectHit.GetComponent<FeederCreator>().isTargeted = true;
                 Open();
+            }
+            else
+            {
+                Close();
             }
         }
     }
@@ -81,5 +94,14 @@ public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
     {
         pos1.DOAnchorPos3DX(1500, 1);
        // Panel.transform.DOMoveX(2500, 1);
+    }
+    private void SeedOpen()
+    {
+        FeederObject.GetComponent<FeederLogic>().Open();
+    }
+
+    private void SeedClose()
+    {
+        FeederObject.GetComponent<FeederLogic>().Close();
     }
 }
