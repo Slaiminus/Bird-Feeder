@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class MoneyLogic : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class MoneyLogic : MonoBehaviour
     private void Update()
     {
         moneyText.text = $"Δενόγθ: {Convert.ToString(money)}";
+        if (money >= 30)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     private void Addd()

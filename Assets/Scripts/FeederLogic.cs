@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Security.Cryptography;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,12 +13,14 @@ public class FeederLogic : MonoBehaviour
     [SerializeField] private GameObject seeds;
     [SerializeField] private GameObject thePanel;
     [SerializeField] private float earnAmount;
+    private TMP_Text seedText;
     public GameObject panel;
     private GameObject Player;
     private Button GetSeeds;
     private Button CloseButton;
     private Image seedsCounter;
     private RectTransform pos1;
+
 
     GameObject currentSeeds;
     [SerializeField] private float minDelay; // Минимальная задержка
@@ -30,7 +33,8 @@ public class FeederLogic : MonoBehaviour
         panel = Instantiate(thePanel, canvas.transform);
         GetSeeds = panel.transform.Find("ReFill").GetComponent<Button>();
         CloseButton = panel.transform.Find("Close").GetComponent<Button>();
-        seedsCounter = panel.transform.Find("Image").GetComponent<Image>();
+        seedText = panel.transform.Find("SeedText").GetComponent<TMP_Text>();
+        // seedsCounter = panel.transform.Find("SeedProgress").GetComponent<Image>();  - пока не работает :(
 
     }
     private void Start()
@@ -44,11 +48,13 @@ public class FeederLogic : MonoBehaviour
     {
         if (currentSeeds != null) 
         {
-            seedsCounter.fillAmount = 2 / currentSeeds.transform.localScale.y;
+            // seedsCounter.fillAmount = 2 / currentSeeds.transform.localScale.y;
+            seedText.text = $"{currentSeeds.transform.localScale.y * 50}%";
         }
         else
         {
-            seedsCounter.fillAmount = 0;
+            seedText.text = $"Пусто";
+            //seedsCounter.fillAmount = 0;
         }
     }
 

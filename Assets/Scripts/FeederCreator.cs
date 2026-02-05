@@ -20,7 +20,7 @@ public class FeederCreator : MonoBehaviour
     [SerializeField] private GameObject Camera;
 
     private float[] costs = { 0f, 5f, 10f, 15f };
-    private int Counter = -1;
+    private int Counter = 0;
     private bool isOpen = false;
     public bool isTargeted = false;
     private RectTransform posCreate;
@@ -37,7 +37,7 @@ public class FeederCreator : MonoBehaviour
     }
     private void Update()
     {
-        if (Camera.GetComponent<MoneyLogic>().money < costs[Counter] || Counter == -1)
+        if (Camera.GetComponent<MoneyLogic>().money < costs[Counter] || Counter == 0)
         {
             CreateFeeder.interactable = false;
         }
@@ -54,7 +54,7 @@ public class FeederCreator : MonoBehaviour
             Instantiate(_Feeders[Counter - 1], transform.parent);
             Camera.GetComponent<MoneyLogic>().money -= costs[Counter];
             Close();
-            Counter = -1;
+            Counter = 0;
             Destroy(gameObject);
         }
     }
