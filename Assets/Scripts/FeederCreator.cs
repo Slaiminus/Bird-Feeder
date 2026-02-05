@@ -15,7 +15,7 @@ public class FeederCreator : MonoBehaviour
     [SerializeField] private Button ButtonFeeder3;
     [SerializeField] private Button CreateFeeder;
     [SerializeField] private Button CloseMenu;
-    [SerializeField] private GameObject Panel; 
+    [SerializeField] private GameObject PanelCreate; 
     [SerializeField] private GameObject[] _Feeders;
     [SerializeField] private GameObject Camera;
 
@@ -23,7 +23,7 @@ public class FeederCreator : MonoBehaviour
     private int Counter = 0;
     private bool isOpen = false;
     public bool isTargeted = false;
-    private RectTransform pos1;
+    private RectTransform posCreate;
 
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class FeederCreator : MonoBehaviour
         CreateFeeder.onClick.AddListener(Create);
         CloseMenu.onClick.AddListener(Close);
 
-        pos1 = Panel.GetComponent<RectTransform>();
+        posCreate = PanelCreate.GetComponent<RectTransform>();
     }
     private void Update()
     {
@@ -63,12 +63,12 @@ public class FeederCreator : MonoBehaviour
     }
     private void Open()
     {
-        pos1.DOAnchorPos3DX(570, 1);
+        posCreate.DOAnchorPos3DX(570, 1);
         // Panel.transform.DOMoveX(1550, 1);
     }
     private void Close()
     {
-        pos1.DOAnchorPos3DX(1500, 1);
+        posCreate.DOAnchorPos3DX(1500, 1);
         // Panel.transform.DOMoveX(2500, 1);
     }
 }

@@ -105,9 +105,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e024bb026f77b214da838413a01bab42, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5841995006259803979}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e024bb026f77b214da838413a01bab42, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4650271337940458289}
   m_SourcePrefab: {fileID: 100100000, guid: e024bb026f77b214da838413a01bab42, type: 3}
 --- !u!1 &7262750995067148926 stripped
@@ -115,19 +112,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e024bb026f77b214da838413a01bab42, type: 3}
   m_PrefabInstance: {fileID: 7497103996391958319}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5841995006259803979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7262750995067148926}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ff663231c9bfe46895dc37a60e1445, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FeederAppear
-  Feeder: {fileID: 0}
 --- !u!64 &4650271337940458289
 MeshCollider:
   m_ObjectHideFlags: 0
