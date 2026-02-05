@@ -15,15 +15,16 @@ public class FeederCreator : MonoBehaviour
     [SerializeField] private Button ButtonFeeder3;
     [SerializeField] private Button CreateFeeder;
     [SerializeField] private Button CloseMenu;
-    [SerializeField] private Button TestOpenButton;
     [SerializeField] private GameObject Panel; 
     [SerializeField] private GameObject[] _Feeders;
+    [SerializeField] private GameObject Camera;
 
+    private float[] costs = { 0f, 5f, 10f, 15f };
     private int Counter = 0;
     private bool isOpen = false;
     public bool isTargeted = false;
+    private RectTransform pos1;
 
-    // private RectTransform rectTransform;
     private void Awake()
     {
         ButtonFeeder1.onClick.AddListener(() => feederCounter(1));
@@ -31,7 +32,19 @@ public class FeederCreator : MonoBehaviour
         ButtonFeeder3.onClick.AddListener(() => feederCounter(3));
         CreateFeeder.onClick.AddListener(Create);
         CloseMenu.onClick.AddListener(Close);
-        // TestOpenButton.onClick.AddListener(Open);
+
+        pos1 = Panel.GetComponent<RectTransform>();
+    }
+    private void Update()
+    {
+        if (Camera.GetComponent<MoneyLogic>().money < costs[Counter])
+        {
+            CreateFeeder.interactable = false;
+        }
+        else
+        {
+            CreateFeeder.interactable = true;
+        }
     }
     private void Create() 
     {
@@ -39,6 +52,7 @@ public class FeederCreator : MonoBehaviour
         {
             Debug.Log($"Создана кормушка {Counter}");
             Instantiate(_Feeders[Counter - 1], transform.parent);
+            Camera.GetComponent<MoneyLogic>().money -= costs[Counter];
             Close();
             Destroy(gameObject);
         }
@@ -49,13 +63,12 @@ public class FeederCreator : MonoBehaviour
     }
     private void Open()
     {
-        isOpen = true;
-        Panel.transform.DOMoveX(1550, 1);
+        pos1.DOAnchorPos3DX(570, 1);
+        // Panel.transform.DOMoveX(1550, 1);
     }
     private void Close()
     {
-        isOpen = false;
-        isTargeted = false;
-        Panel.transform.DOMoveX(2500, 1);
+        pos1.DOAnchorPos3DX(1500, 1);
+        // Panel.transform.DOMoveX(2500, 1);
     }
 }

@@ -15,6 +15,12 @@ public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
     // private FeederCreator feederCreator;
     private GameObject objectHit;
     private GameObject lastObject;
+    private RectTransform pos1;
+
+    private void Awake()
+    {
+        pos1 = Panel.GetComponent<RectTransform>();
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -29,24 +35,28 @@ public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
 
         if (Physics.Raycast(ray, out hit))
         {
+            if (lastObject != null)
+            {
+                if (lastObject.GetComponent<FeederCreator>() != null)
+                {
+                    lastObject.GetComponent<FeederCreator>().isTargeted = false;
+                }
+            }
             if (objectHit != null)
             {
                 lastObject = objectHit;
             }
             objectHit = hit.collider.gameObject;
-            
 
             if (objectHit.CompareTag(TreeTag))
             {
                 transform.DOMove(objectHit.transform.position + new Vector3(0, -3, 0), moveSpeed);
-                lastObject.GetComponent<FeederCreator>().isTargeted = false;
                 Close();
             }
 
             if (objectHit.CompareTag(FeederTag))
             {
                 transform.DOMove(objectHit.transform.position, moveSpeed);
-                lastObject.GetComponent<FeederCreator>().isTargeted = false;
                 Close();
             }
 
@@ -61,10 +71,12 @@ public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
 
     private void Open()
     {
-        Panel.transform.DOMoveX(1550, 1);
+        pos1.DOAnchorPos3DX(570, 1);
+       // Panel.transform.DOMoveX(1550, 1);
     }
     private void Close()
     {
-        Panel.transform.DOMoveX(2500, 1);
+        pos1.DOAnchorPos3DX(1500, 1);
+       // Panel.transform.DOMoveX(2500, 1);
     }
 }
