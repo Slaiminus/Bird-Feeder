@@ -1,11 +1,6 @@
-using System;
-using System.Diagnostics.CodeAnalysis;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
-using Unity.VisualScripting;
 
 public class FeederCreator : MonoBehaviour
 {

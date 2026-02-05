@@ -1,9 +1,6 @@
 using DG.Tweening;
-using System.Security.Cryptography.X509Certificates;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static UnityEngine.Rendering.DebugUI;
 
 public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
 {
