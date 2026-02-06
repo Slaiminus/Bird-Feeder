@@ -103,12 +103,12 @@ public class FeederLogic : MonoBehaviour
     public void Close()
     {
         pos1 = panel.GetComponent<RectTransform>();
-        pos1.DOAnchorPos3DY(1000, 1);
+        pos1.DOAnchorPos3DY(400, 1);
     }
 
     public void Open()
     {
         pos1 = panel.GetComponent<RectTransform>();
-        pos1.DOAnchorPos3DY(110, 1);
+        pos1.DOAnchorPos3DY(100, 1);
     }
 }

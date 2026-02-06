@@ -64,7 +64,7 @@ public class FeederCreator : MonoBehaviour
     }
     private void Close()
     {
-        posCreate.DOAnchorPos3DX(1500, 1);
+        posCreate.DOAnchorPos3DX(570, 1);
         // Panel.transform.DOMoveX(2500, 1);
     }
 }

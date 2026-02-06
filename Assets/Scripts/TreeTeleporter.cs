@@ -49,6 +49,14 @@ public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
                 lastObject = objectHit;
             }
             objectHit = hit.collider.gameObject;
+            
+            if (FeederObject != null)
+            {
+                if (lastObject != objectHit)
+                {
+                    SeedClose();
+                }
+            }
 
             if (objectHit.CompareTag(TreeTag))
             {
@@ -61,13 +69,7 @@ public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
                 FeederObject = objectHit;
                 SeedOpen();
             }
-            else
-            {
-                if (FeederObject != null)
-                {
-                    SeedClose();
-                }
-            }
+            
 
             if (objectHit.CompareTag(GhostTag))
             {
@@ -84,12 +86,12 @@ public class TreeTeleporter : MonoBehaviour //Скрипт закреплён на Camera Center
 
     private void Open()
     {
-        pos1.DOAnchorPos3DX(570, 1);
+        pos1.DOAnchorPos3DX(270, 1);
        // Panel.transform.DOMoveX(1550, 1);
     }
     private void Close()
     {
-        pos1.DOAnchorPos3DX(1500, 1);
+        pos1.DOAnchorPos3DX(570, 1);
        // Panel.transform.DOMoveX(2500, 1);
     }
     private void SeedOpen()
